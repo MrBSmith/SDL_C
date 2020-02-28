@@ -2,9 +2,46 @@
 #include <stdlib.h>
 #include <SDL.h>
 
+int init_SDL_window(SDL_Window* p_window, SDL_Renderer* p_renderer);
+
 int main(int argc, char *argv[])
 {
-    // Initialisation de la SDL
+    SDL_Window* p_window;
+    SDL_Renderer* p_renderer;
+    SDL_Event evenement;
+    int prog_finished = 0;
+
+    // Initialisation de la SDL, de la fenêtre et du renderer associé
+    if (init_SDL_window(p_window, p_renderer) != EXIT_SUCCESS){
+        return EXIT_FAILURE;
+    }
+
+    // Boucle principale du programme
+    while(prog_finished != 1)
+    {
+
+        SDL_RenderPresent(p_renderer);
+        SDL_WaitEvent(&evenement);
+
+        if(evenement.type == SDL_QUIT){
+            prog_finished = 1;
+        }
+    }
+
+    // Détruit la fenêtre et le renderer avant de quitter le programme
+    SDL_DestroyRenderer(p_renderer);
+    SDL_DestroyWindow(p_window);
+
+    // On quitte la SDL avant de quitter le programme
+    SDL_Quit();
+    return EXIT_SUCCESS;
+}
+
+
+
+// Initialise la SDL, la fenêtre et le renderer. Renvoi EXIT_SUCCESS si tout s'est bien passé, et EXIT_FAILURE dans le cas contraire
+int init_SDL_window(SDL_Window* p_window, SDL_Renderer* p_renderer){
+
     if(SDL_Init(SDL_INIT_VIDEO) != 0){
 
         printf("Erreur d'initialisation de la SDL : %s", SDL_GetError()); // Affiche un message d'erreur si l'initialisation de la SDL a échouée
@@ -13,25 +50,23 @@ int main(int argc, char *argv[])
     } else {
 
         // Creation d'une surface de 640*480 pixels, 32bits/pxl pour les couleurs, en utilisant la mémoire de la carte 3D
-        SDL_Window* p_window = SDL_CreateWindow("Ma fenetre de jeu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
+        p_window = SDL_CreateWindow("Ma fenetre de jeu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
 
         // Creation du renderer associé a la fenêtre
-        SDL_Renderer* p_renderer = SDL_CreateRenderer(p_window, -1, SDL_RENDERER_ACCELERATED);
+        p_renderer = SDL_CreateRenderer(p_window, -1, SDL_RENDERER_ACCELERATED);
 
-        if (p_window != NULL){
-
-            SDL_Delay(3000); /* Attendre trois secondes, que l'utilisateur voie la fenêtre */
-            SDL_DestroyWindow(p_window);
-
-        } else {
-
-            // Verification d'une potentielle erreur lors de la création de la fenètre
+        // Verification d'une potentielle erreur lors de la création de la fenètre
+        if(p_window == NULL){
             printf("Impossble de creer la fenetre: %s\n", SDL_GetError());
+            return EXIT_FAILURE;
+        }
+
+        // Verification d'une potentielle erreur lors de la création du renderer
+        if(p_renderer == NULL){
+            printf("Impossble de creer le renderer: %s\n", SDL_GetError());
             return EXIT_FAILURE;
         }
     }
 
-
-    SDL_Quit(); // On quitte la SDL avant de quitter le programme
     return EXIT_SUCCESS;
 }
