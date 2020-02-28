@@ -16,10 +16,27 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
+
+    // Initialisation d'un point
+    SDL_Point point1;
+
+    // Définition de la position du point
+    point1.x = 10;
+    point1.y = 20;
+
+    // Initialisation d'un rect
+    SDL_Rect rect1;
+
+    // Définition de la position du rect, et de ses dimentions
+    rect1.x = 40;
+    rect1.y = 50;
+    rect1.w = 20;
+    rect1.h = 20;
+
+
     // Boucle principale du programme
     while(prog_finished != 1)
     {
-
         SDL_RenderPresent(p_renderer);
         SDL_WaitEvent(&evenement);
 
