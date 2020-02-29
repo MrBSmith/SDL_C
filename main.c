@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <SDL.h>
 
 int init_SDL_window(SDL_Window* p_window, SDL_Renderer* p_renderer);
+void DrawCircle(SDL_Renderer *p_renderer, int origin_x, int origin_y, int radius, SDL_Color color);
+void DrawFilledCircle(SDL_Renderer *p_renderer, int origin_x, int origin_y, int radius, SDL_Color color);
 
 int main(int argc, char *argv[])
 {
@@ -46,13 +49,19 @@ int main(int argc, char *argv[])
     point1.y = 20;
 
     // Initialisation d'un rect
-    SDL_Rect rect1;
+    SDL_Rect rect1, rect2;
 
     // Définition de la position du rect, et de ses dimentions
     rect1.x = 40;
     rect1.y = 50;
     rect1.w = 20;
     rect1.h = 20;
+
+    // Définition de la position du rect, et de ses dimentions
+    rect2.x = 140;
+    rect2.y = 50;
+    rect2.w = 20;
+    rect2.h = 20;
 
     // Initialisation d'une couleur
     SDL_Color red;
@@ -63,6 +72,15 @@ int main(int argc, char *argv[])
     red.b = 0;
     red.a = 255;
 
+
+    // Initialisation d'une couleur
+    SDL_Color black;
+
+    // Définition de la couleur contenue dans notre element de type SDL_Color fraichement initialisé
+    black.r = 0;
+    black.g = 0;
+    black.b = 0;
+    black.a = 255;
 
     // Boucle principale du programme
     while(prog_finished != 1)
@@ -79,6 +97,19 @@ int main(int argc, char *argv[])
         // Rempli le fond de la couleur déclarée plus haut
         SDL_SetRenderDrawColor(p_renderer, red.r, red.g, red.b, red.a);
         SDL_RenderClear(p_renderer);
+
+        // Dessine un rectangle de couleur noir
+        SDL_SetRenderDrawColor(p_renderer, black.r, black.g, black.b, black.a);
+        SDL_RenderDrawRect(p_renderer, &rect1);
+
+        SDL_RenderDrawRect(p_renderer, &rect2);
+        SDL_RenderFillRect(p_renderer, &rect2);
+
+        // Dessine un cercle de couleur noir, vide
+        DrawCircle(p_renderer, 100, 150, 40, black);
+
+        DrawFilledCircle(p_renderer, 200, 150, 40, black);
+
         SDL_RenderPresent(p_renderer);
     }
 
@@ -90,3 +121,46 @@ int main(int argc, char *argv[])
     SDL_Quit();
     return EXIT_SUCCESS;
 }
+
+
+// Dessine le cercle donné
+void DrawCircle(SDL_Renderer *p_renderer, int origin_x, int origin_y, int radius, SDL_Color color)
+{
+    int new_x = 0;
+    int new_y = 0;
+    int old_x =  origin_x + radius;
+    int old_y = origin_y;
+    float step = (M_PI * 2) / 50;
+
+    SDL_SetRenderDrawColor(p_renderer, color.r, color.g, color.b, 255);
+
+    for(float theta = 0; theta <= (M_PI * 2); theta += step){
+        new_x = origin_x + (radius * cos(theta));
+        new_y = origin_y - (radius * sin(theta));
+
+        SDL_RenderDrawLine(p_renderer, old_x, old_y, new_x, new_y);
+
+        old_x = new_x;
+        old_y = new_y;
+    }
+
+    new_x = origin_x + radius;
+    new_y = origin_y;
+    SDL_RenderDrawLine(p_renderer, old_x, old_y, new_x, new_y);
+
+}
+
+// Dessine le cercle donné, rempli
+void DrawFilledCircle(SDL_Renderer *p_renderer, int origin_x, int origin_y, int radius, SDL_Color color)
+{
+	for(double dy = 1; dy <= radius; dy += 1.0){
+
+		double dx = floor(sqrt((2.0 * radius * dy) - (dy * dy)));
+
+		SDL_SetRenderDrawColor(p_renderer, color.r, color.g, color.b, color.a);
+		SDL_RenderDrawLine(p_renderer, origin_x - dx, origin_y + dy - radius, origin_x + dx, origin_y + dy - radius);
+		SDL_RenderDrawLine(p_renderer, origin_x - dx, origin_y - dy + radius, origin_x + dx, origin_y - dy + radius);
+
+	}
+}
+
