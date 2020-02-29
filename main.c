@@ -72,7 +72,6 @@ int main(int argc, char *argv[])
     red.b = 0;
     red.a = 255;
 
-
     // Initialisation d'une couleur
     SDL_Color black;
 
@@ -81,6 +80,9 @@ int main(int argc, char *argv[])
     black.g = 0;
     black.b = 0;
     black.a = 255;
+
+    // Creation d'une surface
+    SDL_Surface surface = SDL_CreateRGBSurface(0, 500, 300, 32, 0, 0, 0, 0);
 
     // Boucle principale du programme
     while(prog_finished != 1)
@@ -108,6 +110,7 @@ int main(int argc, char *argv[])
         // Dessine un cercle de couleur noir, vide
         DrawCircle(p_renderer, 100, 150, 40, black);
 
+        // Dessine un cercle de couleur noir, plein
         DrawFilledCircle(p_renderer, 200, 150, 40, black);
 
         SDL_RenderPresent(p_renderer);
