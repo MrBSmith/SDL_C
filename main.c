@@ -76,6 +76,9 @@ int main(int argc, char *argv[])
             }
         }
 
+        // Rempli le fond de la couleur déclarée plus haut
+        SDL_SetRenderDrawColor(p_renderer, red.r, red.g, red.b, red.a);
+        SDL_RenderClear(p_renderer);
         SDL_RenderPresent(p_renderer);
     }
 
