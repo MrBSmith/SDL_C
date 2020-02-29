@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1582716521 source:d:\projets programmation\testsdl\main.c
+1582978525 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
