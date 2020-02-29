@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         // Creation du renderer associé a la fenêtre
         p_renderer = SDL_CreateRenderer(p_window, -1, SDL_RENDERER_ACCELERATED);
 
-        // Verification d'une potentielle erreur lors de la création de la fenètre
+        // Verification d'une potentielle erreur lors de la création de la fenêtre
         if(p_window == NULL){
             printf("Impossble de creer la fenetre: %s\n", SDL_GetError());
             return EXIT_FAILURE;
