@@ -104,6 +104,17 @@ int main(int argc, char *argv[])
     SDL_FreeSurface(p_surface);
     SDL_FreeSurface(p_surface2);
 
+    Uint32 format = 0;
+    int access = 0;
+    int width = 0;
+    int height = 0;
+
+    if(SDL_QueryTexture(p_texture, &format, &access, &width, &height) != 0){
+        return EXIT_FAILURE;
+    } else {
+        printf("La texture fait %d par %d", width, height);
+    }
+
     // Boucle principale du programme
     while(prog_finished != 1)
     {
@@ -139,7 +150,7 @@ int main(int argc, char *argv[])
         SDL_SetRenderTarget(p_renderer, p_texture);
 
         // Déssine la texture
-        //SDL_RenderCopy(p_renderer, p_texture, NULL, NULL);
+        SDL_RenderCopy(p_renderer, p_texture, NULL, NULL);
 
         SDL_RenderPresent(p_renderer);
     }
