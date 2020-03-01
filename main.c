@@ -89,16 +89,20 @@ int main(int argc, char *argv[])
 
     // Creation d'une surface
     SDL_Surface* p_surface = SDL_CreateRGBSurface(0, 640, 480, 32, 0, 0, 0, 0);
+    SDL_Surface* p_surface2 = SDL_CreateRGBSurface(0, 640, 480, 32, 0, 0, 0, 0);
 
     // Déssine un rectangle bleu dans la surface
     SDL_FillRect(p_surface, &rect3, SDL_MapRGB(p_surface->format, 0, 255, 0));
 
+    // Copie une surface dans une autre
+    SDL_BlitSurface(p_surface, NULL, p_surface2, NULL);
+
     // Crée une texture a partir de la surface
-    SDL_Texture* p_texture = SDL_CreateTextureFromSurface(p_renderer, p_surface);
-    SDL_Rect dimensions = {0,0,0,0};
+    SDL_Texture* p_texture = SDL_CreateTextureFromSurface(p_renderer, p_surface2);
 
     // Libere l'espace en memoire attribué a la surface
     SDL_FreeSurface(p_surface);
+    SDL_FreeSurface(p_surface2);
 
     // Boucle principale du programme
     while(prog_finished != 1)
@@ -112,6 +116,7 @@ int main(int argc, char *argv[])
             }
         }
 
+        /*
         // Rempli le fond de la couleur déclarée plus haut
         SDL_SetRenderDrawColor(p_renderer, red.r, red.g, red.b, red.a);
         SDL_RenderClear(p_renderer);
@@ -123,14 +128,18 @@ int main(int argc, char *argv[])
         SDL_RenderDrawRect(p_renderer, &rect2);
         SDL_RenderFillRect(p_renderer, &rect2);
 
-        // Déssine la texture
-        SDL_RenderCopy(p_renderer, p_texture, NULL, NULL);
-
         // Dessine un cercle de couleur noir, vide
         DrawCircle(p_renderer, 100, 150, 40, black);
 
         // Dessine un cercle de couleur noir, plein
         DrawFilledCircle(p_renderer, 200, 150, 40, black);
+        */
+
+        // Définit la texture comme cible du renderer
+        SDL_SetRenderTarget(p_renderer, p_texture);
+
+        // Déssine la texture
+        //SDL_RenderCopy(p_renderer, p_texture, NULL, NULL);
 
         SDL_RenderPresent(p_renderer);
     }
