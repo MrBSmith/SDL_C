@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     point1.y = 20;
 
     // Initialisation d'un rect
-    SDL_Rect rect1, rect2;
+    SDL_Rect rect1, rect2, rect3;
 
     // Définition de la position du rect, et de ses dimentions
     rect1.x = 40;
@@ -62,6 +62,12 @@ int main(int argc, char *argv[])
     rect2.y = 50;
     rect2.w = 20;
     rect2.h = 20;
+
+    // Définition de la position du rect, et de ses dimentions
+    rect3.x = 200;
+    rect3.y = 50;
+    rect3.w = 20;
+    rect3.h = 20;
 
     // Initialisation d'une couleur
     SDL_Color red;
@@ -82,7 +88,17 @@ int main(int argc, char *argv[])
     black.a = 255;
 
     // Creation d'une surface
-    SDL_Surface surface = SDL_CreateRGBSurface(0, 500, 300, 32, 0, 0, 0, 0);
+    SDL_Surface* p_surface = SDL_CreateRGBSurface(0, 640, 480, 32, 0, 0, 0, 0);
+
+    // Déssine un rectangle bleu dans la surface
+    SDL_FillRect(p_surface, &rect3, SDL_MapRGB(p_surface->format, 0, 255, 0));
+
+    // Crée une texture a partir de la surface
+    SDL_Texture* p_texture = SDL_CreateTextureFromSurface(p_renderer, p_surface);
+    SDL_Rect dimensions = {0,0,0,0};
+
+    // Libere l'espace en memoire attribué a la surface
+    SDL_FreeSurface(p_surface);
 
     // Boucle principale du programme
     while(prog_finished != 1)
@@ -106,6 +122,9 @@ int main(int argc, char *argv[])
 
         SDL_RenderDrawRect(p_renderer, &rect2);
         SDL_RenderFillRect(p_renderer, &rect2);
+
+        // Déssine la texture
+        SDL_RenderCopy(p_renderer, p_texture, NULL, NULL);
 
         // Dessine un cercle de couleur noir, vide
         DrawCircle(p_renderer, 100, 150, 40, black);
@@ -152,6 +171,7 @@ void DrawCircle(SDL_Renderer *p_renderer, int origin_x, int origin_y, int radius
     SDL_RenderDrawLine(p_renderer, old_x, old_y, new_x, new_y);
 
 }
+
 
 // Dessine le cercle donné, rempli
 void DrawFilledCircle(SDL_Renderer *p_renderer, int origin_x, int origin_y, int radius, SDL_Color color)

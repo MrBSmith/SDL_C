@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1582978525 source:d:\projets programmation\testsdl\main.c
+1583013633 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
+	<math.h>
 	<SDL.h>
 
 1564029277 c:\program files (x86)\codeblocks\sdl\sdl2-2.0.10\i686-w64-mingw32\include\sdl2\sdl.h
