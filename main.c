@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
     black.a = 255;
 
     // Creation d'une surface
-    SDL_Surface* p_surface = SDL_CreateRGBSurface(0, 640, 480, 32, 0, 0, 0, 0);
+    SDL_Surface* p_surface = SDL_LoadBMP("Vierbit4.bmp");
     SDL_Surface* p_surface2 = SDL_CreateRGBSurface(0, 640, 480, 32, 0, 0, 0, 0);
 
     // Déssine un rectangle bleu dans la surface
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
     SDL_BlitSurface(p_surface, NULL, p_surface2, NULL);
 
     // Crée une texture a partir de la surface
-    SDL_Texture* p_texture = SDL_CreateTextureFromSurface(p_renderer, p_surface2);
+    SDL_Texture* p_texture = SDL_CreateTextureFromSurface(p_renderer, p_surface);
 
     // Libere l'espace en memoire attribué a la surface
     SDL_FreeSurface(p_surface);
