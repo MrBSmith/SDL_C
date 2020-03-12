@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1583083153 source:d:\projets programmation\testsdl\main.c
+1583171347 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
-	<math.h>
 	<SDL.h>
+	"cercle.h"
+	"SDL_manager.h"
 
 1564029277 c:\program files (x86)\codeblocks\sdl\sdl2-2.0.10\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -698,4 +699,45 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1583171177 source:d:\projets programmation\testsdl\cercle.c
+	"cercle.h"
+
+1583171394 d:\projets programmation\testsdl\cercle.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<SDL.h>
+
+1583164434 source:d:\projets programmation\testsdl\rectangle.c
+	"rectangle.h"
+
+1583165263 d:\projets programmation\testsdl\rectangle.h
+	<stdio.h>
+	<stdlib.h>
+	<SDL.h>
+
+1583165546 source:d:\projets programmation\testsdl\color.c
+	"color.h"
+
+1583165257 d:\projets programmation\testsdl\color.h
+	<stdio.h>
+	<stdlib.h>
+	<SDL.h>
+
+1583165962 source:d:\projets programmation\testsdl\point.c
+	"point.h"
+
+1583165689 d:\projets programmation\testsdl\point.h
+	<stdio.h>
+	<stdlib.h>
+	<SDL.h>
+
+1583168166 source:d:\projets programmation\testsdl\sdl_manager.c
+	"SDL_manager.h"
+
+1583167783 d:\projets programmation\testsdl\sdl_manager.h
+	<stdio.h>
+	<stdlib.h>
+	<SDL.h>
 
