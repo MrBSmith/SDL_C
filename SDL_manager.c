@@ -17,6 +17,9 @@ int SDL_init_manager(SDL_manager* p_SDL_manager){
         // Creation du renderer associé a la fenêtre
         p_SDL_manager -> p_renderer = SDL_CreateRenderer(p_SDL_manager -> p_window, -1, SDL_RENDERER_ACCELERATED);
 
+        // Creation de la surface de rendu
+        p_SDL_manager -> p_surface = SDL_CreateRGBSurface(0, 640, 480, 32, 0, 0, 0, 0);
+
         // Verification d'une potentielle erreur lors de la création de la fenêtre
         if(p_SDL_manager -> p_window == NULL){
             printf("Impossble de creer la fenetre: %s\n", SDL_GetError());
