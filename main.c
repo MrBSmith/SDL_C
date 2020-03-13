@@ -15,6 +15,16 @@ int main(int argc, char *argv[])
     SDL_manager* p_SDL_manager = &SDL_manager1;
     SDL_init_manager(p_SDL_manager);
 
+    // Initialize the image loader
+    // Enable the loading of png files
+    int flag = IMG_INIT_PNG;
+    int initted = IMG_Init(flag);
+
+    if((initted & flag) != flag){ // handle error
+        printf("IMG_Init: Failed to init required jpg and png support!\n");
+        printf("IMG_Init: %s\n", IMG_GetError());
+    }
+
     // Initialisation d'un point
     // SDL_Point point1 = {20, 10};
 
@@ -31,8 +41,11 @@ int main(int argc, char *argv[])
     circle circle1 = {100, 150, 40};
     circle circle2 = {200, 150, 40};
 
+
+    SDL_Surface* p_surface = IMG_Load("Stump.png");
+
     // Creation d'une surface
-    SDL_Surface* p_surface = SDL_LoadBMP("Vierbit4.bmp");
+    //SDL_Surface* p_surface = SDL_LoadBMP("Vierbit4.bmp");
     SDL_Surface* p_surface2 = SDL_CreateRGBSurface(0, 640, 480, 32, 0, 0, 0, 0);
 
     // Déssine un rectangle bleu dans la surface
@@ -91,13 +104,13 @@ int main(int argc, char *argv[])
         // Dessine un cercle de couleur noir, plein
         DrawFilledCircle(p_SDL_manager -> p_renderer, &circle2, black);
 
-        /*
+
         // Définit la texture comme cible du renderer
-        SDL_SetRenderTarget(p_renderer, p_SDL_manager -> p_texture);
+        SDL_SetRenderTarget(p_SDL_manager -> p_renderer, p_SDL_manager -> p_texture);
 
         // Déssine la texture
-        SDL_RenderCopy(p_renderer, p_SDL_manager -> p_texture, NULL, NULL);
-        */
+        SDL_RenderCopy(p_SDL_manager -> p_renderer, p_SDL_manager -> p_texture, NULL, NULL);
+
 
         SDL_RenderPresent(p_SDL_manager -> p_renderer);
     }
@@ -107,6 +120,7 @@ int main(int argc, char *argv[])
     SDL_DestroyWindow(p_SDL_manager -> p_window);
 
     // On quitte la SDL avant de quitter le programme
+    IMG_Quit();
     SDL_Quit();
     return EXIT_SUCCESS;
 }

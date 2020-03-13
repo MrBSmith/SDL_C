@@ -16,7 +16,8 @@
 					<Add directory="C:/Program Files (x86)/CodeBlocks/SDL/SDL2-2.0.10/i686-w64-mingw32/include/SDL2" />
 				</Compiler>
 				<Linker>
-					<Add option="-lmingw32 -lSDL2main -lSDL2" />
+					<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL_image" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/SDL/SDL2-2.0.10/i686-w64-mingw32/lib/SDL_image.lib" />
 					<Add directory="C:/Program Files (x86)/CodeBlocks/SDL/SDL2-2.0.10/i686-w64-mingw32/lib" />
 				</Linker>
 			</Target>
@@ -39,6 +40,7 @@
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2" />
+			<Add library="C:/Program Files (x86)/CodeBlocks/SDL/SDL2-2.0.10/i686-w64-mingw32/lib/SDL_image.lib" />
 			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL/SDL2-2.0.10/i686-w64-mingw32/lib" />
 		</Linker>
 		<Unit filename="SDL_manager.c">

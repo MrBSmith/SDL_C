@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1584047219 source:d:\projets programmation\testsdl\main.c
+1584096265 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
@@ -742,7 +742,7 @@
 	<stdlib.h>
 	<SDL.h>
 
-1561870323 c:\program files (x86)\codeblocks\sdl\sdl2-2.0.10\i686-w64-mingw32\include\sdl2\sdl_image.h
+1561870368 c:\program files (x86)\codeblocks\sdl\sdl2-2.0.10\i686-w64-mingw32\include\sdl2\sdl_image.h
 	"SDL.h"
 	"SDL_version.h"
 	"begin_code.h"
