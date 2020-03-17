@@ -56,6 +56,12 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="tileset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tileset.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

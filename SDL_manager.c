@@ -1,10 +1,10 @@
 #include "SDL_manager.h"
 
-
-int SDL_init_manager(SDL_manager* p_SDL_manager){
+// Initialise la SDL et le SDL_Manager, renvoi EXIT_SUCCES
+int SDL_InitManager(SDL_manager* p_SDL_manager){
 
     // Initialisation de la SDL, de la fenêtre et du renderer associé
-    if(SDL_Init(SDL_INIT_VIDEO) != 0){
+    if(SDL_Init(SDL_INIT_VIDEO) != EXIT_SUCCESS){
 
         printf("Erreur d'initialisation de la SDL : %s", SDL_GetError()); // Affiche un message d'erreur si l'initialisation de la SDL a échouée
         return EXIT_FAILURE; // On quitte le programme si l'ouverture de la SDL a échouée
@@ -34,4 +34,34 @@ int SDL_init_manager(SDL_manager* p_SDL_manager){
     }
 
     return EXIT_SUCCESS;
+}
+
+
+// Procedure de rendu
+void SDL_ManagerRender(SDL_manager* p_SDL_manager){
+    // Crée une texture a partir de la surface
+    p_SDL_manager -> p_texture = SDL_CreateTextureFromSurface(p_SDL_manager -> p_renderer, p_SDL_manager -> p_surface);
+
+    // Définit la texture comme cible du renderer
+    SDL_SetRenderTarget(p_SDL_manager -> p_renderer, p_SDL_manager -> p_texture);
+
+    // Déssine la texture
+    SDL_RenderCopy(p_SDL_manager -> p_renderer, p_SDL_manager -> p_texture, NULL, NULL);
+    SDL_RenderPresent(p_SDL_manager -> p_renderer);
+
+    // Rafraichit l'affichage
+    SDL_RenderClear(p_SDL_manager -> p_renderer);
+}
+
+
+// Liberer de la memoire tous les elements du manager
+void SDL_FreeManager(SDL_manager* p_SDL_manager){
+
+    // Détruit la fenêtre et le renderer avant de quitter le programme
+    SDL_DestroyRenderer(p_SDL_manager -> p_renderer);
+    SDL_DestroyWindow(p_SDL_manager -> p_window);
+
+    // Libere l'espace en memoire attribué a la surface
+    SDL_FreeSurface(p_SDL_manager -> p_surface);
+
 }

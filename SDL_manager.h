@@ -13,6 +13,14 @@ typedef struct SDL_manager
     SDL_Surface *p_surface;
 } SDL_manager;
 
-int SDL_init_manager(SDL_manager* p_SDL_manager);
+
+// Crée la fenètre le renderer et la texture et les stock dans le type SDL_manager
+int SDL_InitManager(SDL_manager* p_SDL_manager);
+
+// Procedure de rendu
+void SDL_ManagerRender(SDL_manager* p_SDL_manager);
+
+// Libère de la mémoire tous les éléments du manager (fenetre, renderer, texture)
+void SDL_FreeManager(SDL_manager* p_SDL_manager);
 
 #endif // SDL_MANAGER_H_INCLUDED

@@ -5,15 +5,17 @@
 
 #include "cercle.h"
 #include "SDL_manager.h"
+#include "tileset.h"
 
 int init_SDL_window(SDL_Window* p_window, SDL_Renderer* p_renderer);
-void DrawSpriteFromTileset(SDL_manager* p_SDL_manager, SDL_Surface* p_tileset, int nb_column, int nb_row, int frame_id, SDL_Rect* p_screen_pos);
+int loop_index(int current_value, int max_value, int increment_value);
+double SDL_GetDelta(Uint32 current_tick);
 
 int main(int argc, char *argv[])
 {
     SDL_manager SDL_manager1;
     SDL_manager* p_SDL_manager = &SDL_manager1;
-    SDL_init_manager(p_SDL_manager);
+    SDL_InitManager(p_SDL_manager);
 
     // Initialize the image loader
     // Enable the loading of png files
@@ -26,33 +28,18 @@ int main(int argc, char *argv[])
     }
 
     // Initialisation des rects
-    SDL_Rect rect1 = {40, 50, 20, 20};
-    SDL_Rect rect2 = {140, 50, 20, 20};
-    SDL_Rect rect3 = {200, 50, 20, 20};
+    SDL_Rect rect = {140, 50, 20, 20};
 
     // Charge le tileset
-    SDL_Surface* p_surface_wayne = IMG_Load("Wayne.png");
-
-    //
-    DrawSpriteFromTileset(p_SDL_manager, p_surface_wayne, 8, 1, 0, &rect2);
-
-    // Crée une texture a partir de la surface
-    p_SDL_manager -> p_texture = SDL_CreateTextureFromSurface(p_SDL_manager -> p_renderer, p_SDL_manager -> p_surface);
-
-    Uint32 format = 0;
-    int access = 0;
-    int width = 0;
-    int height = 0;
-
-    if(SDL_QueryTexture(p_SDL_manager -> p_texture, &format, &access, &width, &height) != 0){
-        return EXIT_FAILURE;
-    } else {
-        printf("La texture fait %d par %d", width, height);
-    }
+    SDL_tileset tileset_wayne;
+    SDL_CreateTilesetFromPNG(&tileset_wayne, "Wayne.png", 1, 8);
 
     // Definit les variables necesaires a la boucle principale
+    int loop_i = 0;
     int prog_finished = 0;
     SDL_Event evenement;
+    Uint32 current_tick;
+    float delta;
 
     // Boucle principale du programme
     while(prog_finished != 1)
@@ -65,23 +52,22 @@ int main(int argc, char *argv[])
             }
         }
 
-        // Rafraichit l'affichage
-        SDL_RenderClear(p_SDL_manager -> p_renderer);
+        current_tick = SDL_GetTicks();
+        delta =  SDL_GetDelta(current_tick);
+        printf("%lf", delta);
 
-        // Définit la texture comme cible du renderer
-        SDL_SetRenderTarget(p_SDL_manager -> p_renderer, p_SDL_manager -> p_texture);
+        loop_i = loop_index(loop_i, 7, 1);
 
-        // Déssine la texture
-        SDL_RenderCopy(p_SDL_manager -> p_renderer, p_SDL_manager -> p_texture, NULL, NULL);
-        SDL_RenderPresent(p_SDL_manager -> p_renderer);
+
+        // Déssine le sprite donné a la position du rect
+        DrawSpriteFromTileset(p_SDL_manager, &tileset_wayne, loop_i, &rect);
+
+        // Rendu
+        SDL_ManagerRender(p_SDL_manager);
     }
 
-    // Détruit la fenêtre et le renderer avant de quitter le programme
-    SDL_DestroyRenderer(p_SDL_manager -> p_renderer);
-    SDL_DestroyWindow(p_SDL_manager -> p_window);
-
-    // Libere l'espace en memoire attribué a la surface
-    SDL_FreeSurface(p_surface_wayne);
+    // Libère de la mémoire tous les éléments du manager (Fenètre, renderer, texture)
+    SDL_FreeManager(p_SDL_manager);
 
     // On quitte la SDL avant de quitter le programme
     IMG_Quit();
@@ -89,17 +75,19 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
-
-// Dessine un sprite a partir d'un tileset, du nombre de rangés et de lignes dans ce tile set et de sa position dans celui-ci
-// Stock le dit sprite dans la surface du SDL_Manager
-void DrawSpriteFromTileset(SDL_manager* p_SDL_manager, SDL_Surface* p_tileset, int nb_column, int nb_row, int frame_id, SDL_Rect* p_screen_pos){
-
-	SDL_Rect Rect_tile;
-	Rect_tile.w = (p_tileset -> w) / nb_column;
-	Rect_tile.h = (p_tileset -> h) / nb_row;
-    Rect_tile.x = frame_id * Rect_tile.w;
-    Rect_tile.y = 0;
-
-    SDL_BlitSurface(p_tileset, &Rect_tile, p_SDL_manager -> p_surface, p_screen_pos);
+// Compute the delta time between two frames
+double SDL_GetDelta(Uint32 current_tick){
+    Uint32 new_tick = SDL_GetTicks();
+    return new_tick - current_tick;
 }
 
+
+
+// Increment a value and wrap it if it's over the given max_value
+int loop_index(int current_value, int max_value, int increment_value){
+    current_value += increment_value;
+    if(current_value > max_value){
+        current_value = 0;
+    }
+    return current_value;
+}
