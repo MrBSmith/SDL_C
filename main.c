@@ -82,7 +82,6 @@ double SDL_GetDelta(Uint32 current_tick){
 }
 
 
-
 // Increment a value and wrap it if it's over the given max_value
 int loop_index(int current_value, int max_value, int increment_value){
     current_value += increment_value;
