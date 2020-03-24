@@ -6,13 +6,14 @@
 #include "cercle.h"
 #include "SDL_manager.h"
 #include "tileset.h"
-
-int init_SDL_window(SDL_Window* p_window, SDL_Renderer* p_renderer);
-int loop_index(int current_value, int max_value, int increment_value);
-double SDL_GetDelta(Uint32 current_tick);
+#include "animation.h"
+#include "delta.h"
 
 int main(int argc, char *argv[])
 {
+    // The frames per second
+    const int FPS = 20; // In miliseconds
+
     SDL_manager SDL_manager1;
     SDL_manager* p_SDL_manager = &SDL_manager1;
     SDL_InitManager(p_SDL_manager);
@@ -34,12 +35,13 @@ int main(int argc, char *argv[])
     SDL_tileset tileset_wayne;
     SDL_CreateTilesetFromPNG(&tileset_wayne, "Wayne.png", 1, 8);
 
-    // Definit les variables necesaires a la boucle principale
-    int loop_i = 0;
+    // Inititialise l'animation
+    SDL_animation anim_wayne;
+    SDL_InitAnimation(&anim_wayne, &tileset_wayne, 0, 8);
+
+    // Definit les variables necessaires a la boucle principale
     int prog_finished = 0;
     SDL_Event evenement;
-    Uint32 current_tick;
-    float delta;
 
     // Boucle principale du programme
     while(prog_finished != 1)
@@ -52,15 +54,15 @@ int main(int argc, char *argv[])
             }
         }
 
-        current_tick = SDL_GetTicks();
-        delta =  SDL_GetDelta(current_tick);
-        printf("%lf", delta);
+        // Compute the delta time
+        Uint32 current_tick = SDL_GetTicks();
+        double delta = SDL_GetDelta(current_tick);
 
-        loop_i = loop_index(loop_i, 7, 1);
-
+        // Wait the right time so the FPS is right
+        SDL_regulate_FPS(FPS, delta);
 
         // Déssine le sprite donné a la position du rect
-        DrawSpriteFromTileset(p_SDL_manager, &tileset_wayne, loop_i, &rect);
+        SDL_DrawAnimation(p_SDL_manager, &anim_wayne, &rect);
 
         // Rendu
         SDL_ManagerRender(p_SDL_manager);
@@ -73,20 +75,4 @@ int main(int argc, char *argv[])
     IMG_Quit();
     SDL_Quit();
     return EXIT_SUCCESS;
-}
-
-// Compute the delta time between two frames
-double SDL_GetDelta(Uint32 current_tick){
-    Uint32 new_tick = SDL_GetTicks();
-    return new_tick - current_tick;
-}
-
-
-// Increment a value and wrap it if it's over the given max_value
-int loop_index(int current_value, int max_value, int increment_value){
-    current_value += increment_value;
-    if(current_value > max_value){
-        current_value = 0;
-    }
-    return current_value;
 }

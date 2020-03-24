@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1584195904 source:d:\projets programmation\testsdl\main.c
+1584973406 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
@@ -7,6 +7,7 @@
 	"cercle.h"
 	"SDL_manager.h"
 	"tileset.h"
+	"animation.h"
 
 1564029277 c:\program files (x86)\codeblocks\sdl\sdl2-2.0.10\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -749,11 +750,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1584193258 d:\projets programmation\testsdl\tileset.h
+1584964410 d:\projets programmation\testsdl\tileset.h
 	<SDL.h>
+	<SDL_image.h>
 	"SDL_manager.h"
 
-1584189988 source:d:\projets programmation\testsdl\tileset.c
+1584961587 source:d:\projets programmation\testsdl\tileset.c
 	"tileset.h"
 
 1564029277 d:\projets programmation\testsdl\include\sdl2\sdl.h
@@ -1102,4 +1104,23 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1561870368 d:\projets programmation\testsdl\include\sdl2\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1584973409 d:\projets programmation\testsdl\animation.h
+	<SDL.h>
+	"tileset.h"
+
+1584973479 source:d:\projets programmation\testsdl\animation.c
+	"animation.h"
+
+1584974321 source:d:\projets programmation\testsdl\delta.c
+	"delta.h"
+
+1584974324 d:\projets programmation\testsdl\delta.h
+	<SDL.h>
 

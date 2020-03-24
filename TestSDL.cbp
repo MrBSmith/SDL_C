@@ -47,6 +47,12 @@
 		<Unit filename="SDL_manager.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="animation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="animation.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="cercle.c">
 			<Option compilerVar="CC" />
 		</Unit>

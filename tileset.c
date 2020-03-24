@@ -21,5 +21,6 @@ void DrawSpriteFromTileset(SDL_manager* p_SDL_manager, SDL_tileset* p_tileset, i
     Rect_tile.x = frame_id * Rect_tile.w;
     Rect_tile.y = 0;
 
+    SDL_FillRect(p_SDL_manager -> p_surface, NULL, SDL_MapRGB(p_SDL_manager -> p_surface -> format, 255, 0, 0));
     SDL_BlitSurface(p_tileset -> p_surface, &Rect_tile, p_SDL_manager -> p_surface, p_screen_pos);
 }
