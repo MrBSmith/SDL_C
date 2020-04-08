@@ -8,15 +8,14 @@
 #include "tileset.h"
 #include "animation.h"
 #include "delta.h"
+#include "map.h"
 
 int main(int argc, char *argv[])
 {
     // The frames per second
-    const int FPS = 20; // In miliseconds
+    const int FPS = 20;
 
-    SDL_manager SDL_manager1;
-    SDL_manager* p_SDL_manager = &SDL_manager1;
-    SDL_InitManager(p_SDL_manager);
+    SDL_manager* p_SDL_manager = SDL_InitManager();
 
     // Initialize the image loader
     // Enable the loading of png files
@@ -31,13 +30,20 @@ int main(int argc, char *argv[])
     // Initialisation des rects
     SDL_Rect rect = {140, 50, 20, 20};
 
-    // Charge le tileset
-    SDL_tileset tileset_wayne;
-    SDL_CreateTilesetFromPNG(&tileset_wayne, "Wayne.png", 1, 8);
+    // Charge le tileset de la map
+    SDL_tileset* p_tileset_map = SDL_CreateTilesetFromPNG("MapTileset.png", 1, 6);
+
+    // Charge le tileset de l'animation
+    SDL_tileset* p_tileset_wayne = SDL_CreateTilesetFromPNG("Wayne.png", 1, 8);
 
     // Inititialise l'animation
-    SDL_animation anim_wayne;
-    SDL_InitAnimation(&anim_wayne, &tileset_wayne, 0, 8);
+    SDL_animation* p_anim_wayne = SDL_InitAnimation(p_tileset_wayne, 0, 8);
+
+
+    // Crée une map a partir d'un fichier texte
+    SDL_map* p_map = SDL_CreateMapFromFile("Map.txt");
+    printf("width: %d, height: %d\n", p_map -> w, p_map -> h);
+    SDL_print_map_char(p_map);
 
     // Definit les variables necessaires a la boucle principale
     int prog_finished = 0;
@@ -54,15 +60,21 @@ int main(int argc, char *argv[])
             }
         }
 
-        // Compute the delta time
+        // Calcule le delta entre deux frames
         Uint32 current_tick = SDL_GetTicks();
         double delta = SDL_GetDelta(current_tick);
 
-        // Wait the right time so the FPS is right
+        // Attend la bonne quantité de temps pour que le frame rate soit régulier
         SDL_regulate_FPS(FPS, delta);
 
+        // Vide la surface avant de redéssiner dedans
+        SDL_FillRect(p_SDL_manager -> p_surface, NULL, SDL_MapRGB(p_SDL_manager -> p_surface -> format, 0, 0, 0));
+
+        // Dessine la map
+        SDL_DrawMap(p_SDL_manager, p_map, p_tileset_map);
+
         // Déssine le sprite donné a la position du rect
-        SDL_DrawAnimation(p_SDL_manager, &anim_wayne, &rect);
+        SDL_DrawAnimation(p_SDL_manager, p_anim_wayne, &rect);
 
         // Rendu
         SDL_ManagerRender(p_SDL_manager);

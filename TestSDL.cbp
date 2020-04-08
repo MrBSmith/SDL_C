@@ -59,7 +59,13 @@
 		<Unit filename="cercle.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="delta.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="map.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tileset.c">

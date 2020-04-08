@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1584973406 source:d:\projets programmation\testsdl\main.c
+1586200097 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
@@ -8,6 +8,8 @@
 	"SDL_manager.h"
 	"tileset.h"
 	"animation.h"
+	"delta.h"
+	"map.h"
 
 1564029277 c:\program files (x86)\codeblocks\sdl\sdl2-2.0.10\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -703,10 +705,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1584116684 source:d:\projets programmation\testsdl\cercle.c
+1584120284 source:d:\projets programmation\testsdl\cercle.c
 	"cercle.h"
 
-1584116684 d:\projets programmation\testsdl\cercle.h
+1584120284 d:\projets programmation\testsdl\cercle.h
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
@@ -736,10 +738,10 @@
 	<stdlib.h>
 	<SDL.h>
 
-1584194403 source:d:\projets programmation\testsdl\sdl_manager.c
+1586164139 source:d:\projets programmation\testsdl\sdl_manager.c
 	"SDL_manager.h"
 
-1584193740 d:\projets programmation\testsdl\sdl_manager.h
+1586163999 d:\projets programmation\testsdl\sdl_manager.h
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
@@ -750,15 +752,15 @@
 	"begin_code.h"
 	"close_code.h"
 
-1584964410 d:\projets programmation\testsdl\tileset.h
+1586164991 d:\projets programmation\testsdl\tileset.h
 	<SDL.h>
 	<SDL_image.h>
 	"SDL_manager.h"
 
-1584961587 source:d:\projets programmation\testsdl\tileset.c
+1586174446 source:d:\projets programmation\testsdl\tileset.c
 	"tileset.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -791,12 +793,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_main.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_stdinc.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -825,27 +827,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_config.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_platform.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_platform.h
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\begin_code.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\begin_code.h
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\close_code.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\close_code.h
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_assert.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_assert.h
 	"SDL_config.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_atomic.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -853,7 +855,7 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_audio.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -863,24 +865,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_error.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_endian.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_mutex.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_thread.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -891,18 +893,18 @@
 	<stdlib.h>
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_rwops.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_clipboard.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_cpuinfo.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -921,7 +923,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_events.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -935,7 +937,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_video.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -943,13 +945,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_pixels.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_rect.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -957,7 +959,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_surface.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -966,11 +968,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_blendmode.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_keyboard.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -978,27 +980,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_keycode.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_scancode.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_mouse.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_joystick.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_gamecontroller.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -1006,11 +1008,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_quit.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_gesture.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -1018,66 +1020,66 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_touch.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_filesystem.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_haptic.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_hints.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_loadso.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_log.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_messagebox.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_power.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_render.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_sensor.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_shape.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -1086,7 +1088,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_system.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -1094,33 +1096,42 @@
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_timer.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1564029277 d:\projets programmation\testsdl\include\sdl2\sdl_version.h
+1564032877 d:\projets programmation\testsdl\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1561870368 d:\projets programmation\testsdl\include\sdl2\sdl_image.h
+1561873968 d:\projets programmation\testsdl\include\sdl2\sdl_image.h
 	"SDL.h"
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
 
-1584973409 d:\projets programmation\testsdl\animation.h
+1586163548 d:\projets programmation\testsdl\animation.h
 	<SDL.h>
 	"tileset.h"
 
-1584973479 source:d:\projets programmation\testsdl\animation.c
+1586180641 source:d:\projets programmation\testsdl\animation.c
 	"animation.h"
 
-1584974321 source:d:\projets programmation\testsdl\delta.c
+1584977921 source:d:\projets programmation\testsdl\delta.c
 	"delta.h"
 
-1584974324 d:\projets programmation\testsdl\delta.h
+1584977924 d:\projets programmation\testsdl\delta.h
 	<SDL.h>
+
+1586200073 d:\projets programmation\testsdl\map.h
+	<stdio.h>
+	<stdlib.h>
+	<SDL.h>
+	"tileset.h"
+
+1586329791 source:d:\projets programmation\testsdl\map.c
+	"map.h"
 

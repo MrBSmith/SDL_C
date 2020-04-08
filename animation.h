@@ -11,7 +11,7 @@ typedef struct SDL_animation{
 } SDL_animation;
 
 // Initialize the given animation with the given values
-void SDL_InitAnimation(SDL_animation* p_animation, SDL_tileset* p_tileset, Uint32 current_frame, Uint32 max_frame);
+SDL_animation* SDL_InitAnimation(SDL_tileset* p_tileset, Uint32 current_frame, Uint32 max_frame);
 
 // Draw an animation
 void SDL_DrawAnimation(SDL_manager* p_SDL_manager, SDL_animation* p_animation, SDL_Rect* p_position);
