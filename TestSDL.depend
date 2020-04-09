@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1586425985 source:d:\projets programmation\testsdl\main.c
+1586435911 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
@@ -1152,18 +1152,18 @@
 1586339647 source:d:\projets programmation\testsdl\vector.c
 	"vector.h"
 
-1586426853 source:d:\projets programmation\testsdl\sdl_event.c
+1586437467 source:d:\projets programmation\testsdl\sdl_event.c
 	"SDL_event.h"
 
-1586421814 d:\projets programmation\testsdl\sdl_event.h
+1586435848 d:\projets programmation\testsdl\sdl_event.h
 	<SDL.h>
 	"inputkey.h"
 
-1586425818 d:\projets programmation\testsdl\inputkey.h
+1586437479 d:\projets programmation\testsdl\inputkey.h
 	<SDL.h>
 	"vector.h"
 
-1586425909 source:d:\projets programmation\testsdl\inputkey.c
+1586436729 source:d:\projets programmation\testsdl\inputkey.c
 	<stdio.h>
 	<stdlib.h>
 	"inputkey.h"

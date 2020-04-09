@@ -15,5 +15,4 @@ typedef struct SDL_camera {
 // Create a camera with the given position and dimensions
 SDL_camera* SDL_CreateCamera(int x, int y, int w, int h);
 
-
 #endif // CAMERA_H_INCLUDED

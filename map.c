@@ -1,6 +1,5 @@
 #include "map.h"
 
-
 // Create a map out of a txt file
 SDL_map* SDL_CreateMapFromFile(const char* file_path){
 

@@ -5,7 +5,7 @@
 
 // Get the input from the player, and return it
 input get_input(int sym){
-    input control = EMPTY;
+    input control;
     switch(sym){
         case SDLK_z:
             control = UP; break;
@@ -26,52 +26,66 @@ input get_input(int sym){
             control = CANCEL; break;
 
         default :
-            control = ERROR; break;
+             break;
     }
-
     return control;
 }
 
+
 // Print the given input in the console
 void print_input(input inp){
-    if (inp != EMPTY){
-        printf("Input: ");
-        switch(inp)
-        {
-            case UP:
-                 printf("UP\n"); break;
-            case LEFT:
-                 printf("LEFT\n"); break;
-            case RIGHT:
-                printf("RIGHT\n"); break;
-            case DOWN:
-                printf("DOWN\n"); break;
-            case CONFIRM:
-                printf("CONFIRM\n"); break;
-            case CANCEL:
-                printf("CANCEL\n"); break;
-            default :
-                printf("ERROR\n"); break;
-        }
+    switch(inp)
+    {
+        case UP:
+            printf("UP\n"); break;
+        case LEFT:
+            printf("LEFT\n"); break;
+        case RIGHT:
+            printf("RIGHT\n"); break;
+        case DOWN:
+            printf("DOWN\n"); break;
+        case CONFIRM:
+            printf("CONFIRM\n"); break;
+        case CANCEL:
+            printf("CANCEL\n"); break;
+        default :
+            printf("ERROR\n"); break;
     }
 }
 
 
-void move_character(input ply_input, SDL_Rect* p_rect, int move_speed){
-    if (ply_input != EMPTY){
-        switch(ply_input)
-        {
-            case UP:
-                p_rect -> y -= move_speed; break;
-            case LEFT:
-                p_rect -> x -= move_speed; break;
-            case RIGHT:
-                p_rect -> x += move_speed; break;
-            case DOWN:
-                p_rect -> y += move_speed; break;
-            default :
-                break;
-        }
+// Procedure for input manager creation
+input_manager* SDL_CreateInputManager(){
+
+    input_manager* p_inp_manager = malloc(sizeof(input_manager));
+    int input_nb = sizeof(p_inp_manager -> input_state_array) / sizeof(int);
+
+    // Loop through the array of input and set them all to
+    for (int i = 0; i < input_nb - 1; i++){
+        p_inp_manager -> input_state_array[i] = RELEASED;
+    }
+
+    return p_inp_manager;
+}
+
+
+// Respond to the input of the player by moving the character
+void move_character(input_manager* p_input_manager, SDL_Rect* p_rect, int move_speed){
+
+    if(p_input_manager -> input_state_array[UP] == PRESSED){
+        p_rect -> y -= move_speed;
+    }
+
+    if(p_input_manager -> input_state_array[DOWN] == PRESSED){
+        p_rect -> y += move_speed;
+    }
+
+    if(p_input_manager -> input_state_array[LEFT] == PRESSED){
+        p_rect -> x -= move_speed;
+    }
+
+    if(p_input_manager -> input_state_array[RIGHT] == PRESSED){
+        p_rect -> x += move_speed;
     }
 }
 

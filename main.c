@@ -50,13 +50,13 @@ int main(int argc, char *argv[])
 
     // Definit les variables necessaires a la boucle principale
     int prog_finished = 0;
-    input input_manager;
+    input_manager* p_input_manager = SDL_CreateInputManager();
 
     // Boucle principale du programme
     while(prog_finished != 1)
     {
         // Verifie qu'un evenement a eu lieu, si l'evenement est quit, sort du programme
-        if(events_manager(&input_manager) == 1){
+        if(events_manager(p_input_manager) == 1){
             return EXIT_SUCCESS;
         }
 
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
         SDL_DrawMap(p_SDL_manager, p_map, p_tileset_map, p_camera);
 
         // Déplace le personnage en fonction des inputs du joueur
-        move_character(input_manager, &rect, 20);
+        move_character(p_input_manager, &rect, 20);
 
         // Déssine le sprite donné a la position du rect
         SDL_DrawAnimation(p_SDL_manager, p_anim_wayne, &rect);
