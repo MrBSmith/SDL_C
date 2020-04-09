@@ -8,7 +8,10 @@
 #include "tileset.h"
 #include "animation.h"
 #include "delta.h"
+#include "camera.h"
 #include "map.h"
+#include "inputkey.h"
+#include "SDL_event.h"
 
 int main(int argc, char *argv[])
 {
@@ -39,25 +42,22 @@ int main(int argc, char *argv[])
     // Inititialise l'animation
     SDL_animation* p_anim_wayne = SDL_InitAnimation(p_tileset_wayne, 0, 8);
 
-
     // Crée une map a partir d'un fichier texte
     SDL_map* p_map = SDL_CreateMapFromFile("Map.txt");
-    printf("width: %d, height: %d\n", p_map -> w, p_map -> h);
-    SDL_print_map_char(p_map);
+
+    // Crée une camera
+    SDL_camera* p_camera = SDL_CreateCamera(0.0, 0.0, 640.0, 480.0);
 
     // Definit les variables necessaires a la boucle principale
     int prog_finished = 0;
-    SDL_Event evenement;
+    input input_manager;
 
     // Boucle principale du programme
     while(prog_finished != 1)
     {
         // Verifie qu'un evenement a eu lieu, si l'evenement est quit, sort du programme
-        while(SDL_PollEvent(&evenement)){
-            if(evenement.type == SDL_QUIT){
-                prog_finished = 1;
-                break;
-            }
+        if(events_manager(&input_manager) == 1){
+            return EXIT_SUCCESS;
         }
 
         // Calcule le delta entre deux frames
@@ -70,8 +70,15 @@ int main(int argc, char *argv[])
         // Vide la surface avant de redéssiner dedans
         SDL_FillRect(p_SDL_manager -> p_surface, NULL, SDL_MapRGB(p_SDL_manager -> p_surface -> format, 0, 0, 0));
 
+        // Scroll horizontalement la map
+        vector2 dest = {640.0, 0.0};
+        p_camera -> position = linear_interpolate(p_camera -> position, dest, 0.05);
+
         // Dessine la map
-        SDL_DrawMap(p_SDL_manager, p_map, p_tileset_map);
+        SDL_DrawMap(p_SDL_manager, p_map, p_tileset_map, p_camera);
+
+        // Déplace le personnage en fonction des inputs du joueur
+        move_character(input_manager, &rect, 20);
 
         // Déssine le sprite donné a la position du rect
         SDL_DrawAnimation(p_SDL_manager, p_anim_wayne, &rect);

@@ -6,7 +6,7 @@ SDL_manager* SDL_InitManager(){
     SDL_manager* p_SDL_manager = malloc(sizeof(SDL_manager));
 
     // Initialisation de la SDL, de la fenêtre et du renderer associé
-    if(SDL_Init(SDL_INIT_VIDEO) != EXIT_SUCCESS){
+    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != EXIT_SUCCESS){
 
         // Affiche un message d'erreur si l'initialisation de la SDL a échouée
         printf("Erreur d'initialisation de la SDL : %s", SDL_GetError());

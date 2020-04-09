@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1586200097 source:d:\projets programmation\testsdl\main.c
+1586425985 source:d:\projets programmation\testsdl\main.c
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
@@ -9,7 +9,10 @@
 	"tileset.h"
 	"animation.h"
 	"delta.h"
+	"camera.h"
 	"map.h"
+	"inputkey.h"
+	"SDL_event.h"
 
 1564029277 c:\program files (x86)\codeblocks\sdl\sdl2-2.0.10\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -738,7 +741,7 @@
 	<stdlib.h>
 	<SDL.h>
 
-1586164139 source:d:\projets programmation\testsdl\sdl_manager.c
+1586423472 source:d:\projets programmation\testsdl\sdl_manager.c
 	"SDL_manager.h"
 
 1586163999 d:\projets programmation\testsdl\sdl_manager.h
@@ -1126,12 +1129,42 @@
 1584977924 d:\projets programmation\testsdl\delta.h
 	<SDL.h>
 
-1586200073 d:\projets programmation\testsdl\map.h
+1586336705 d:\projets programmation\testsdl\map.h
 	<stdio.h>
 	<stdlib.h>
 	<SDL.h>
 	"tileset.h"
+	"camera.h"
 
-1586329791 source:d:\projets programmation\testsdl\map.c
+1586339825 source:d:\projets programmation\testsdl\map.c
 	"map.h"
+
+1586335996 source:d:\projets programmation\testsdl\camera.c
+	"camera.h"
+
+1586336091 d:\projets programmation\testsdl\camera.h
+	<stdio.h>
+	<stdlib.h>
+	"vector.h"
+
+1586339925 d:\projets programmation\testsdl\vector.h
+
+1586339647 source:d:\projets programmation\testsdl\vector.c
+	"vector.h"
+
+1586426853 source:d:\projets programmation\testsdl\sdl_event.c
+	"SDL_event.h"
+
+1586421814 d:\projets programmation\testsdl\sdl_event.h
+	<SDL.h>
+	"inputkey.h"
+
+1586425818 d:\projets programmation\testsdl\inputkey.h
+	<SDL.h>
+	"vector.h"
+
+1586425909 source:d:\projets programmation\testsdl\inputkey.c
+	<stdio.h>
+	<stdlib.h>
+	"inputkey.h"
 

@@ -41,6 +41,10 @@
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image" />
 			<Add directory="lib" />
 		</Linker>
+		<Unit filename="SDL_event.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="SDL_event.h" />
 		<Unit filename="SDL_manager.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -53,6 +57,10 @@
 		<Unit filename="animation.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="camera.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="camera.h" />
 		<Unit filename="cercle.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -68,12 +76,17 @@
 		<Unit filename="map.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="map.h" />
 		<Unit filename="tileset.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tileset.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="vector.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="vector.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -88,7 +88,7 @@ int get_file_height(FILE* p_fichier){
 
 
 // Dessine la map passé en argument avec les sprite du tileset
-void SDL_DrawMap(SDL_manager* p_manager, SDL_map* p_map, SDL_tileset* p_tileset){
+void SDL_DrawMap(SDL_manager* p_manager, SDL_map* p_map, SDL_tileset* p_tileset, SDL_camera* p_camera){
 
     SDL_Rect destRect;
     char current_char;
@@ -106,8 +106,8 @@ void SDL_DrawMap(SDL_manager* p_manager, SDL_map* p_map, SDL_tileset* p_tileset)
             index = ((int) current_char) - 48;
 
             // Détermine a quel endroit le dessiner
-            destRect.x = tile_size.w * i;
-            destRect.y = tile_size.h * j;
+            destRect.x = tile_size.w * i + (int) (p_camera -> position.x);
+            destRect.y = tile_size.h * j + (int) (p_camera -> position.y);
 
             // Déssine le sprite
             SDL_DrawSpriteFromTileset(p_manager, p_tileset, index, &destRect);
